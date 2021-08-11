@@ -4,6 +4,7 @@ function hideBtn(event) {
     );
 }
 
+
 fetch("https://api.pexels.com/v1/search?query=[tiger]", {
     "method": "GET",
     "headers":
@@ -77,4 +78,16 @@ const loadImgs2 = function () {
         .then(body => { insertImgs(body) })
         .catch(error => { console.log(error) })
 }
-
+function search() {
+    fetch(`https://api.pexels.com/v1/search?query=[${document.querySelector("#search1").value}]`, {
+        "method": "GET",
+        "headers":
+            { "Authorization": "563492ad6f917000010000019f190e58d35d4f0d9160a296ac83ba10" }
+    })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })
+        .then(body => { insertImgs(body) })
+        .catch(error => { console.log(error) })
+}
